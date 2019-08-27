@@ -5,6 +5,7 @@ AM_INIT_AUTOMAKE([foreign -Wall -Werror -Wno-portability])
 AC_PROG_CC
 AC_CONFIG_HEADERS([config.h])
 
+
 GETTEXT_PACKAGE="gtkterm"
 AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE", [GETTEXT package name])
@@ -16,10 +17,10 @@ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 
 PKG_CHECK_MODULES([gtk], [gtk+-3.0 >= 3.12.0])
 PKG_CHECK_MODULES([vte], [vte-2.91 >= 0.40.0])
-PKG_CHECK_MODULES([udev], [libudev >= 232])
+PKG_CHECK_MODULES([udev], [libudev >= 229])
 
 if test "$CC" = "gcc" ; then
-  GNUCFLAGS="-Wall -fno-omit-frame-pointer -fno-strict-aliasing -O2"
+  GNUCFLAGS="-Wall -ludev -fno-omit-frame-pointer -fno-strict-aliasing -O2"
 fi
 AC_SUBST(GNUCFLAGS)
 
